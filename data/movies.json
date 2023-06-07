@@ -1,0 +1,93 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "Фильм 1",
+        "year": 2021,
+        "type": "кино",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма1",
+        "team": ["Создатель 1", "Создатель 1"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 2,
+        "title": "Фильм 2",
+        "year": 2010,
+        "type": "сериал",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма2",
+        "team": ["Создатель 2", "Создатель 2"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 3,
+        "title": "Фильм 3",
+        "year": 2020,
+        "type": "кино",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма3",
+        "team": ["Создатель 3", "Создатель 3"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 4,
+        "title": "Фильм 4",
+        "year": 2022,
+        "type": "кино",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма4",
+        "team": ["Создатель 4", "Создатель 4"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 5,
+        "title": "Фильм 5",
+        "year": 2002,
+        "type": "сериал",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма5",
+        "team": ["Создатель 5", "Создатель 5"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 6,
+        "title": "Фильм 6",
+        "year": 2024,
+        "type": "кино",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма6",
+        "team": ["Создатель 6", "Создатель 6"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 7,
+        "title": "Фильм 7",
+        "year": 2021,
+        "type": "сериал",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма7",
+        "team": ["Создатель 7", "Создатель 7"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      },
+      {
+        "id": 8,
+        "title": "Фильм 8",
+        "year": 2024,
+        "type": "сериал",
+        "rating": 4.2,
+        "image": "/1.jpeg",
+        "description": "Описание фильма8",
+        "team": ["Создатель 8", "Создатель 8"],
+        "frames": ["/favicon.ico", "/favicon.ico"]
+      }
+    ]
+  }
+  
