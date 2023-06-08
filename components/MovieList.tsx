@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import MovieModal from "./MovieModal";
+import React, { useState, useEffect } from "react";
+import MovieCard from "./MovieCard";
 
 interface Movie {
   id: number;
@@ -14,56 +14,82 @@ interface Movie {
 
 interface MovieListProps {
   movies: Movie[];
-  year: number;
-  type: string;
+  years: number[];
+  types: string[];
 }
 
-const MovieList: React.FC<MovieListProps> = ({ movies, year, type }) => {
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+const MovieList: React.FC<MovieListProps> = ({ movies, years, types }) => {
+  const [filteredMovies, setFilteredMovies] = useState<Movie[]>(movies);
+  const [yearFilter, setYearFilter] = useState<number | undefined>(undefined);
+  const [typeFilter, setTypeFilter] = useState<string | undefined>(undefined);
 
-  const openModal = (movie: Movie) => {
-    setSelectedMovie(movie);
+  useEffect(() => {
+    applyFilters();
+  }, [movies, yearFilter, typeFilter]);
+
+  const applyFilters = () => {
+    let filtered = [...movies];
+
+    if (yearFilter) {
+      filtered = filtered.filter((movie) => movie.year === yearFilter);
+    }
+
+    if (typeFilter) {
+      filtered = filtered.filter((movie) => movie.type === typeFilter);
+    }
+
+    setFilteredMovies(filtered);
   };
 
-  const closeModal = () => {
-    setSelectedMovie(null);
+  const handleYearFilterChange = (year: number | undefined) => {
+    setYearFilter(year);
   };
 
-  const filteredMovies = movies.filter((movie) => {
-    if (year === 0 && type === "") {
-      return true;
-    }
-    if (year === 0) {
-      return movie.type === type;
-    }
-    if (type === "") {
-      return movie.year === year;
-    }
-    return movie.year === year && movie.type === type;
-  });
+  const handleTypeFilterChange = (type: string | undefined) => {
+    setTypeFilter(type);
+  };
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="mb-4">
+        <label htmlFor="yearFilter">Выберите год</label>
+        <select
+          id="yearFilter"
+          value={yearFilter || ""}
+          onChange={(e) =>
+            handleYearFilterChange(parseInt(e.target.value) || undefined)
+          }
+        >
+          <option value="">Все</option>
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="typeFilter">Выберите тип</label>
+        <select
+          id="typeFilter"
+          value={typeFilter || ""}
+          onChange={(e) => handleTypeFilterChange(e.target.value || undefined)}
+        >
+          <option value="">Все</option>
+          {types.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="grid grid-cols-4">
         {filteredMovies.map((movie) => (
-          <div
-            key={movie.id}
-            className="flex flex-col items-center"
-            onClick={() => openModal(movie)}
-            style={{ cursor: "pointer" }}
-          >
-            <img
-              src={movie.image}
-              alt={movie.title}
-              className="w-full h-auto mb-2"
-            />
-            <h3>{movie.title}</h3>
+          <div key={movie.id} className="mt-2 ml-2">
+            <MovieCard movie={movie} />
           </div>
         ))}
       </div>
-      {selectedMovie && (
-        <MovieModal movie={selectedMovie} closeModal={closeModal} />
-      )}
     </div>
   );
 };
